@@ -7,16 +7,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        monochrome = false,
-        features = "src/test/resources/features",
-        glue = "stepDefinitions",
+        features = "classpath:features",
+        plugin = {"pretty", "rerun:target/rerun.txt", "json:target/report.json", "html:target/cucumber-html-report"},
         tags = "@smoke",
+        glue = "stepDefinitions",
         dryRun = false,
-        plugin = {
-                "pretty",
-                "rerun:target/rerun.txt",
-                "json:target/report.json",
-                "html:target/default-cucumber-report.html"}
+        monochrome = true
+
 )
 public class TestCucumberRunner {
 }

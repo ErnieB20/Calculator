@@ -82,6 +82,7 @@
                     <configuration>
                         <includes>
                             <include>**/*Runner.java</include>
+                            <testSourceDirectory>src/test/java</testSourceDirectory>
                         </includes>
                     </configuration>
                 </plugin>

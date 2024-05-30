@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -32,7 +31,7 @@ public class CalculatorStepDefinitions extends TestState {
         driver.get(url);
     }
 
-    @Given("^(?:|we are|I am) on (.*)$")
+    @When("^(?:|we are|I am) on (.*)$")
     public void onPage(String name) throws RuntimeException {
         YamlLocatorReader reader = new YamlLocatorReader();
         setPage(new HashMap<>(reader.read(name)));
@@ -75,17 +74,6 @@ public class CalculatorStepDefinitions extends TestState {
         By by = get(locator);
         common.clickWhenVisible(by);
     }
-
-
-    @Then("I should see the following calculator buttons")
-    public void iShouldSeeTheFollowingCalculatorButtons(DataTable table) {
-        List<String> buttons = table.asList();
-        for (String button : buttons) {
-            WebElement element = driver.findElement(By.id(button));
-            Assert.assertTrue(element.isDisplayed());
-        }
-    }
-
 
     @And("^(?:|we |I )wait( for 1 second| for \\d+ seconds| for \\d+ minutes|)$")
     public void weWait(String pause) {
