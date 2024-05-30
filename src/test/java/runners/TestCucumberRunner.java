@@ -10,7 +10,7 @@ import org.junit.runner.RunWith;
         monochrome = false,
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        tags = "@calculator",
+        tags = "@smoke",
         dryRun = false,
         plugin = {
                 "pretty",
