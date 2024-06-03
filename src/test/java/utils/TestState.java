@@ -16,7 +16,6 @@ public class TestState {
         this.page = new HashMap<>();
     }
 
-
     public Map<String, String> getPage() {
         return page;
     }
@@ -24,7 +23,6 @@ public class TestState {
     public void setPage(Map<String, String> page) {
         this.page = page;
     }
-
 
     public synchronized By get(String locator) {
         String result = getPage().get(locator);
@@ -64,11 +62,11 @@ public class TestState {
     public static void tearDownAfterScenario(Scenario scenario) {
         if (scenario.isFailed()) {
             takeScreenShot(scenario);
-            ConsoleColors.printColorRedMessage("::::::TEST FAILED ::::::");
+            ConsoleColors.printColorRedMessage("::::::TEST FAILED::::::");
         }else {
-            ConsoleColors.printColorGreenMessage("::::::TEST PASSED  ::::::");
-            ConsoleColors.printColorBlackMessage("::::::  END OF TEST EXECUTION! ::::::");
+            ConsoleColors.printColorGreenMessage("::::::TEST PASSED::::::");
         }
+        ConsoleColors.printColorBlackMessage("::::::  END OF TEST EXECUTION! ::::::");
         Driver.closeDriverInstance();
     }
 

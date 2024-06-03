@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         plugin = {"pretty",
                 "rerun:target/rerun.txt",
                 "json:target/report.json",
-                "html:target/cucumber-html-report",},
+                "html:target/default-cucumber-html-report",},
         tags = "@calc_all_env",
         glue = "stepDefinitions",
         dryRun = false,

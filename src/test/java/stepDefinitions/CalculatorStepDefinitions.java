@@ -14,7 +14,6 @@ public class CalculatorStepDefinitions extends TestState {
     CommonFunctions common = new CommonFunctions();
 
 
-
     @Given("^(?:|we |I )navigate to \"([^\"]*)\"$")
     public void navigateToUrl(String envUrl) {
         String url;
