@@ -5,17 +5,12 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.*;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class CalculatorStepDefinitions extends TestState {
 
     WebDriver driver = Driver.getDriverInstance();
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     CommonFunctions common = new CommonFunctions();
 
 
@@ -25,8 +20,10 @@ public class CalculatorStepDefinitions extends TestState {
         String url;
         if (envUrl.contains("prod")){
             url = ConfigurationManager.getProperty("prodEnvUrl");
-        }else{
+        }else if (envUrl.contains("stage")){
             url = ConfigurationManager.getProperty("stageEnvUrl");
+        }else {
+            throw new RuntimeException("PROVIDE ENVIRONMENT URL! " + envUrl);
         }
         driver.get(url);
     }
@@ -88,7 +85,7 @@ public class CalculatorStepDefinitions extends TestState {
         }
     }
 
-    @Then("^the (.*) field should (contain the|be equal to the|NOT contain the|NOT be equal to) following \"([^\"]*)\"$")
+    @Then("^the (.*) field content should (contain the|be equal to the|NOT contain the|NOT be equal to) following \"([^\"]*)\"$")
     public void verifyText(String locator, String condition, String expectedText) {
         By by = get(locator);
         String actualText = common.getTextWhenVisible(by);
@@ -105,6 +102,5 @@ public class CalculatorStepDefinitions extends TestState {
                 Assert.assertFalse("Expected text does CONTAIN actual ",actualText.contains(expectedText));
             }
         }
-
     }
 }

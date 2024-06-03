@@ -26,7 +26,7 @@ public class TestState {
     }
 
 
-    public By get(String locator) {
+    public synchronized By get(String locator) {
         String result = getPage().get(locator);
         if (result == null) {
             throw new NullPointerException("Verify Following Page Object Mapped Correctly: " + locator);
